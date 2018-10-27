@@ -1,0 +1,26 @@
+<DeltaVOpcHdaClient>
+  <Configuration>
+    <OutputFileName>raw_1pt</OutputFileName>
+    <OutputDirectory>.\packed\temp</OutputDirectory>
+    <OutputFileFormat>CSV</OutputFileFormat>
+    <LogFileName>log_raw_1pt</LogFileName>
+    <LogFileDirectory>.\packed\temp</LogFileDirectory>
+    <TimeSetting>UTC</TimeSetting>
+    <HostName>localhost</HostName>
+  </Configuration>
+  <Execution>
+    <Steps>
+      <Step>
+        <Interface>IOPCHDA_SyncRead</Interface>
+        <Method>ReadRaw</Method>
+        <ItemID>V1-COMMON/BATCH_ID.CV</ItemID>
+        <StartTime>2018-10-01 02:15:17</StartTime>
+        <EndTime>2018-10-01 02:15:17</EndTime>
+        <NumValues>1</NumValues>
+        <Bounds>TRUE</Bounds>
+      </Step>
+    </Steps>
+  </Execution>
+</DeltaVOpcHdaClient>
+
+<!--StartTim, EndTime use UTC format, not local time-->

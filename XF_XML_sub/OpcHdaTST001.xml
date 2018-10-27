@@ -1,0 +1,26 @@
+<DeltaVOpcHdaClient>
+  <Configuration>
+    <OutputFileName>SIM-001</OutputFileName>
+    <OutputDirectory>.\XF_XML_sub</OutputDirectory>
+    <OutputFileFormat>CSV</OutputFileFormat>
+    <LogFileName>log_SIM-001</LogFileName>
+    <LogFileDirectory>.\XF_XML_sub</LogFileDirectory>
+    <TimeSetting>UTC</TimeSetting>
+    <HostName>localhost</HostName>
+  </Configuration>
+  <Execution>
+    <Steps>
+      <Step>
+        <Interface>IOPCHDA_SyncRead</Interface>
+        <Method>ReadRaw</Method>
+        <ItemID>V1-COMMON/BATCH_ID.CV</ItemID>
+        <StartTime>2018-10-01 02:15:17</StartTime>
+        <EndTime>2018-10-01 02:15:17</EndTime>
+        <NumValues>1</NumValues>
+        <Bounds>TRUE</Bounds>
+      </Step>
+    </Steps>
+  </Execution>
+</DeltaVOpcHdaClient>
+
+<!--StartTim, EndTime use UTC format, not local time-->
