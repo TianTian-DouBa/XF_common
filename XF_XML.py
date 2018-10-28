@@ -2,7 +2,7 @@
 from lxml import etree
 from subprocess import run
 from io import StringIO
-from XF_common.XF_LOG_MANAGE import *
+from XF_common.XF_LOG_MANAGE import * #101
 from XF_common.XF_UTC_LOCAL import dt_to_string, sp_string_to_dt
 
 def load_xml(path):
