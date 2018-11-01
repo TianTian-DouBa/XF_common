@@ -1,14 +1,23 @@
 from subprocess import run, Popen
 from XF_common.XF_LOG_MANAGE import *
+import os
 #from XF_common.XF_XML import
 
 EXE_PATH = r"C:\DeltaV\bin\OPCHDAClient.exe"
 
+class Value_Log():
+    """one historian log"""
+    def __init__(self):
+        self.value = None
+        self.time_stamp = None
+        self.quality = None
+
 def execute_xml(xml_path):
     """execute the xml by OPCHDAClient.exe"""
-    run([EXE_PATH,xml_path])
+    with open(os.devnull, 'w') as devnull:
+        run([EXE_PATH,xml_path], stdout=devnull, shell=True) #devnull for echo off, shell for no window jump out
 
-def valid_value(value):
+def valid_batch_id(value):
     """valid the value:
     -return:<string> 'none' or 'Batch_ID'
     -value:<string>
@@ -17,11 +26,11 @@ def valid_value(value):
         _strip = value.strip()
         _value = _strip.lower()
         if _value == 'none' or _value == '':
-            return 'none'
+            return '--none--'
         else:
             return _strip
     else:
-        return 'none'
+        return '--none--'
 
 if __name__ == '__main__':
     a = "  none"
