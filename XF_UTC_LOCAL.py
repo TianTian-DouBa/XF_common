@@ -66,6 +66,18 @@ def dtmsec_to_string(dtmsec):
     add_log(40, 'fn:dtmsec_to_string -return "{0[0]}"', log_args)
     return result
 
+def dtmsec_to_dt_and_frac(dtmsec):
+    """convert datetime with million seconds to datetime fine to second and frac_sec 0~9999.
+    dtmesc: <datetime>
+    return: (<datetime> like 2018-08-16 13:34:23,231)"""
+    _microsec = dtmsec.microsecond
+    dt = dtmsec - timedelta(microseconds=_microsec)
+    frac_sec = int(_microsec / 100)
+    result = (dt, frac_sec)
+    log_args = [result]
+    add_log(40, 'fn:dtmsec_to_dt_and_frac -return "{0[0]}"', log_args)
+    return result
+
 def dt_f_to_string(dt):
     """display datetime in the format of '2018-08-16 13:34:23.231'
     -dt: <datetime>"""

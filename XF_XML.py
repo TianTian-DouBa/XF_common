@@ -187,9 +187,12 @@ def read_mpt(xml_path):
     if logable(30):
         item = root.find("./Item")
         item_id = item.attrib['ItemID']
-        log_print('[fn]read_mpt().ItemID:{}'.format(item_id))
-    log_args = [result]
-    add_log(30, '[fn]read_mpt()._time_string --"{0[0]}"', log_args)
+        log_print('[fn]read_mpt().ItemID:{} start----'.format(item_id))
+        for _rslt in result:
+            log_args = [_rslt.value,_rslt.time_stamp,_rslt.quality]
+            add_log(30, '    .value:"{0[0]}", .time_stamp:"{0[1]}", .quality:"{0[2]}"', log_args)
+        log_print('[fn]read_mpt().ItemID:{} end----'.format(item_id))
+
     return result
 
 def read_1pt(xml_path):
@@ -214,8 +217,8 @@ def read_1pt(xml_path):
         item = root.find("./Item")
         item_id = item.attrib['ItemID']
         log_print('[fn]read_raw_1pt().ItemID:{}'.format(item_id))
-    log_args = [result]
-    add_log(30, '[fn]read_raw_1pt()._time_string --"{0[0]}"', log_args)
+    log_args = [result.value,result.time_stamp,result.quality]
+    add_log(30, '[fn]read_raw_1pt().value:"{0[0]}", .time_stamp:"{0[1]}", .quality:"{0[2]}"', log_args)
     return result
 
 def _str_to_time(time_string):
