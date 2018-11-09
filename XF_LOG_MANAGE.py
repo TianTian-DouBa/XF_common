@@ -5,7 +5,7 @@ def add_log(log_category, log_string, *args):
     """追加log信息
     e.g:
     log_args = [path]
-    add_log(10, 'file not found. --"{0[0]}"', log_args)"""
+    add_log(10, 'fn:funchtion(). --"{0[0]}"', log_args)"""
     global Log_Thread_Hold
     if log_category > Log_Thread_Hold:
         return

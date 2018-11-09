@@ -172,10 +172,10 @@ def read_mpt(xml_path):
     """read the lis of (value, time_stamp, quality).
     -return:<[(value,time_stamp<dt UTC>,quality<int>),...]>
     -xml_path:<string> e.g. r".\packed\temp\raw_1pt_opt.xml"""
+    result = []
     tree = load_xml(xml_path)
     root = tree.getroot()
     _data_value = root.findall("./Item/DataValue")
-    result = []
     for log in _data_value:
         value_log = Value_Log()
         value_log.value = log.text
@@ -197,11 +197,14 @@ def read_mpt(xml_path):
 
 def read_1pt(xml_path):
     """read the value, time_stamp and quality.
-    -return:<XF_DV_HIST.Value_Log>
+    -return:<XF_DV_HIST.Value_Log> or None
     -xml_path:<string> e.g. r".\packed\temp\raw_1pt_opt.xml"""
     tree = load_xml(xml_path)
     root = tree.getroot()
     _data_value = root.find("./Item/DataValue")
+    if _data_value == None:
+        add_log(40, 'fn:read_1pt.reuslt=None, no new data')
+        return None
     value = _data_value.text
     _time_string = _data_value.attrib['TimeStamp']
     time_stamp = _str_to_time(_time_string)

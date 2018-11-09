@@ -15,20 +15,24 @@ class Value_Log():
 def execute_xml(xml_path):
     """execute the xml by OPCHDAClient.exe"""
     with open(os.devnull, 'w') as devnull:
+        #run([EXE_PATH,xml_path])
         run([EXE_PATH,xml_path], stdout=devnull, shell=True) #devnull for echo off, shell for no window jump out
 
-def valid_batch_id(value):
+def valid_batch_id(value_log):
     """valid the value:
-    -return:<string> 'none' or 'Batch_ID'
-    -value:<string>
+    -return:<string> '--none--' or 'Batch_ID'
+    -value:<Value_Log> or None
     """
-    if isinstance(value,str):
-        _strip = value.strip()
-        _value = _strip.lower()
-        if _value == 'none' or _value == '':
-            return '--none--'
+    if isinstance(value_log,Value_Log):
+        if isinstance(value_log.value,str):
+            _strip = value_log.value.strip()
+            _value = _strip.lower()
+            if _value == 'none' or _value == '' or _value == '0':
+                return '--none--'
+            else:
+                return _strip
         else:
-            return _strip
+            return '--none--'
     else:
         return '--none--'
 
