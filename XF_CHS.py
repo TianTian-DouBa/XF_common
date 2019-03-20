@@ -1,5 +1,6 @@
 from XF_common.XF_LOG_MANAGE import *
 from subprocess import Popen
+from ctypes import cdll
 
 CHS_PATH = r"C:\DeltaV\Bin\CHS.exe"
 
