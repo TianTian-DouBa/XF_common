@@ -1,4 +1,9 @@
+"""
+for testing only, not useful
+"""
+
 from ctypes import *
+
 nb = cdll.LoadLibrary('./activiation32.so')
 print("c dll loaded")
 nb.WriteActiveFile.restype = c_bool
