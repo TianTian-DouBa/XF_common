@@ -9,11 +9,11 @@ class SO():
 
     def plot_trend(self, start_s, end_s, trends_s, compare, startTime2_s):
         """plot trends
-        start_s:<string>
-        end_s:<string>
-        trends_s:<string>
+        start_s:<string> e.g.: r'2018/11/03 10:12:00'
+        end_s:<string> e.g.: r'2018/11/03 10:50:00'
+        trends_s:<string> e.g.: r"SIM-001/SIN.CV, SIM-001/RAMP.CV, , , V1-COMMON/BATCH_ID.CV"
         compare:<bool> if compare trends
-        startTime2_s:<string> e.g. 
+        startTime2_s:<string> e.g.: r'2018/11/09 20:31:00'
         """
         self.so.TrsPlot.restype = c_bool
         self.so.TrsPlot.argtypes = [c_char_p,c_char_p,c_char_p,c_bool, c_char_p]
@@ -28,11 +28,8 @@ class SO():
         return result
 
     def valid_key(self):
+        """to validate if the activiation key file .\ActiveKey.dt is available
+        """ 
         self.so.ValidKey.restype = c_bool
         result = self.so.ValidKey()
         return result
-
-    def pass_str(self, input_s):
-        self.so.PassStr.argtypes = [c_char_p]
-        print("py <string>:", input_s)
-        result = self.so.PassStr(str.encode(input_s))
